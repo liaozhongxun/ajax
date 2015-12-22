@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+    <script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript">
+
+	   window.onload = function(){
+
+	      ajax({
+
+	      	type:"get",
+
+	      	url:"teacher.php",
+
+	      	success:function(a){
+	      		var arr=eval(a);
+	      		alert(arr[0].name)
+	      	},
+
+	      	lose:function(a){alert("出错了,状态码为"+a)}
+
+	      });
+
+	   }
+	   // function ajax(json){
+	   // 	  var type = json.type || "get";
+
+	   // 	  var url = json.url;
+
+	   // 	  var data = json.data || "";
+
+	   // 	  var oAjax = null;
+
+    //       if (window.XMLHttpRequest){
+
+	   // 	      oAjax = new XMLHttpRequest();
+
+    //       }else{
+
+    //           oAjax = new ActiveXObject( 'Microsoft.XMLHTTP' );
+    //       }
+
+    //       if(type=="get")url+="?"+data+"&"+Math.random();
+
+	   // 	  oAjax.open(type,url,true);
+
+    //       if (type == "get"){
+    //       	  oAjax.send();
+    //       }else{
+	   //        //post传数据方法 必须规定传输数据的格式
+	   //        oAjax.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	   //        oAjax.send(data);//不会有缓存问题
+
+    //       }
+
+	   // 	  oAjax.onreadystatechange = function(){
+
+    //           if (oAjax.readyState == 4){
+
+    //           	  if (oAjax.status>=200 && oAjax.status<300){
+
+    //           	  	  json.success && json.success(oAjax.responseText)
+
+    //           	  }else{
+              
+    //                   json.lose?json.lose(oAjax.status):alert("发生了"+oAjax.status+"错误")
+
+    //           	  }
+
+    //           }
+
+	   // 	  }
+
+	   // }
+
+	</script>
+</html>

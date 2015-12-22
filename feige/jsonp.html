@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta name="keywords" content="关键词" />
+		<meta name="description" content="描述" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="author" content="阿飞" />
+		<style>
+		*{ margin:0; padding:0;}
+
+		</style>
+		
+		<script>
+
+			window.onload = function(){
+				var oBtn = document.getElementById('btn');
+				oBtn.onclick = function(){
+					var oScript = document.createElement('script');
+					oScript.src = 'jsonp.hh';
+					document.body.appendChild(oScript);
+				};
+			}
+
+			function fly(data){
+				alert(data[0])
+			}
+
+		</script>
+	</head>
+	<body>
+
+		<input type="button" value="按钮" id="btn" />
+
+	</body>
+</html>

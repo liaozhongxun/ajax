@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta name="keywords" content="关键词" />
+		<meta name="description" content="描述" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="author" content="阿飞" />
+		<style>
+		*{ margin:0; padding:0;}
+		#wrap{width:830px;border:2px solid #f00;margin:0 auto; padding:20px;}
+		#wrap ul li{list-style:none;width:260px;float:left;margin-right:25px;}
+		.big{width:258px;border:1px solid #ccc; margin-bottom:10px;}
+		.big img{ width:258px;}
+		.big p{ padding:10px; width:238px; line-height:25px;font-family:'Microsoft yahei';text-align:center;}
+		.big p a{ display:block; color:#000;text-decoration:none;}
+		.big p a:hover{ color:#f69;}
+		#btn{ width:100px; height:40px; background:#999; color:#fff; font-size:14px; cursor:pointer;
+			font-family:'Microsoft yahei'; display:block; margin:20px auto;text-align:center}
+		</style>
+		<script src="ajax.js"></script>
+		<script>
+		window.onload = function(){
+			var oWrap = document.getElementById('wrap');
+			var oLi = oWrap.getElementsByTagName('li');	
+			var oBtn = document.getElementById('btn');
+			var Num = 0;
+			load(Num);
+			
+			oBtn.onclick = function(){
+				Num += 8;
+				load(Num);
+			};
+
+			function load(Num){
+				ajax({
+					url : 'data.php',
+					success : function(data){
+						var data = eval( '('+data+')' );
+						var html = "";
+						for (var i=Num;i<Num+8;i++)
+						{
+							html = '<div class="big"><img src="'+ data[i].src +'" /><p><a href="#">'+ data[i].title +'</a></p></div>'
+							oLi[getShort()].innerHTML += html;
+						}
+					}
+				});
+			}
+
+			function getShort(){
+				var index = 0;
+				var iH = oLi[index].offsetHeight;
+				for (var i=1;i<oLi.length;i++)
+				{
+					if( oLi[i].offsetHeight < iH ){
+						index = i;
+						iH = oLi[i].offsetHeight;
+					}
+				}
+				return index;
+			}
+			
+		};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul>
+				<li></li>
+				<li></li>
+				<li style="margin:0;"></li>
+				<div style="clear:both"></div>
+			</ul>
+		</div>
+
+		<input type="button" value="加载更多" id="btn" />
+	</body>
+</html>

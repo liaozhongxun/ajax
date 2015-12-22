@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>please enter your title</title>
+		<meta name="keywords" content="关键词" />
+		<meta name="description" content="描述" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="author" content="阿飞" />
+		<style>
+		*{ margin:0; padding:0;}
+		#txt{ width:300px; height:40px; font-size:14px; border:1px solid #f99;
+			font-family:'Microsoft yahei';}
+		#list{ display:none; width:300px; border:1px solid #0f0;}
+		#list li{ width:300px; height:30px; font-size:12px; list-style:none}
+		#list li a{ display:block; line-height:30px; color:#000;
+			font-family:'Microsoft yahei';text-decoration:none;}
+		#list li a:hover{ background:#f99; color:#fff;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oTxt = document.getElementById('txt');
+				oTxt.onkeyup = function(){
+					var val = oTxt.value;
+					var oScript = document.createElement('script');
+					oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+ val +"&cb=fly";
+					document.body.appendChild(oScript);
+					document.body.removeChild(oScript);
+				}
+
+			};
+			function fly(data){
+				var oList = document.getElementById('list');
+				var html='';
+				if ( data.s.length > 0)
+				{
+					for (var i=0;i<data.s.length;i++)
+					{
+						html += '<li><a href="https://www.baidu.com/s?wd='+ data.s[i] +'" target="_blank">'+ data.s[i] +'</a></li>'
+					}
+					oList.style.display = 'block';
+					oList.innerHTML = html;
+				}else{
+					oList.style.display = 'none';
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<ul id="list"></ul>
+	</body>
+</html>
