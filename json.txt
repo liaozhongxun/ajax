@@ -1,0 +1,3 @@
+1、json不支持ie67; 进入 json.org 官网下载引入对应的json2.js文件就行了
+
+2、引入了json2.js后 就能使用 parse()  stringify() 两个方法了

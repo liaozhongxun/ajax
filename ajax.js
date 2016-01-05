@@ -38,7 +38,8 @@ function ajax(json){
 
          oAjax = new ActiveXObject( 'Microsoft.XMLHTTP' );
      }
-
+     //有时data有带中文的有时会出现乱码 可用encodeURI();解决
+     //?username="+encodeURI(姓名)+"  。。。
      if(type=="get")url+="?"+data+"&"+Math.random();
 
      oAjax.open(type,url,true);
@@ -47,14 +48,18 @@ function ajax(json){
          oAjax.send();
      }else{
        //post传数据方法 必须规定传输数据的格式
+       //form中默认有的  
        oAjax.setRequestHeader('content-type','application/x-www-form-urlencoded');
        oAjax.send(data);//不会有缓存问题
      }
 
+   //当状态值发生改名是执行 onr eadystate change
    oAjax.onreadystatechange = function(){
 
+         //ajax的工作转态
          if (oAjax.readyState == 4){
 
+             //http转态码
              if (oAjax.status>=200 && oAjax.status<300){
 
                  json.success && json.success(oAjax.responseText)

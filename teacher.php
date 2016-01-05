@@ -17,5 +17,6 @@
 		array('name'=>'晴雪','age'=>'26'),
 	);
 	
+	//根据当前的数据类型输出内容
 	echo json_encode($arr);
 ?>

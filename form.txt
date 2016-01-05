@@ -1,0 +1,22 @@
+1、form 三个属性 :action="" method="get/post" enctype="提交数据格式 默认:application/x-www-form-urlencoded"
+
+2、表单元素最重要的是 name value属性 后台获取的是  ?name1=value1&name2=value2
+
+3、php接收页面
+
+   <?php
+
+      header('content-type:text/html;charset="utf-8"');
+      error_reporting(0);
+
+      //get方式获取get方式提交的数据(改成post就是获取post方式提交的数据)
+      //get是去URL后面查找内容
+      $username = $_GET['username'];
+      $age = $_GET['age'];
+
+      //两种格式的数据
+      $username=$_REQUEST['username'];
+
+      echo "你的名字：{$username}，年龄：{$age}";
+
+   ?>
